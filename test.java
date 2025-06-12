@@ -99,18 +99,19 @@ public class test {
     static int[] deleteElement(int[] a, int element) {
         int i, k = 0, index = -1;
 
-        for (i = 0; i < a.length; i++) {//FINDING  THE INDEX:
+        for (i = 0; i < a.length; i++) {// FINDING THE INDEX:
             if (a[i] == element) {
                 index = i;
                 break;
             }
         }
-        if (index == -1) {//IF ELEMENT IS NOT FOUND IN THE ARRAY:
+        if (index == -1) {// IF ELEMENT IS NOT FOUND IN THE ARRAY:
             System.out.println("this is not a valid index : ");
             return a;
         }
         int b[] = new int[a.length - 1];
-        for (i = 0; i < a.length; i++) {//IF INDEX FOUND THE USE THE CONTINUE STATEMENT TO SKIP THE INDEX VALUE WHILE COPYING THE WHOLE ARRAY TO THE  NEW ARRAY B;
+        for (i = 0; i < a.length; i++) {// IF INDEX FOUND THE USE THE CONTINUE STATEMENT TO SKIP THE INDEX VALUE WHILE
+                                        // COPYING THE WHOLE ARRAY TO THE NEW ARRAY B;
             if (i == index) {
                 continue;
             }
@@ -118,27 +119,92 @@ public class test {
         }
         return b;
     }
-    static int[] updateElements(int []a,int location,int element){
-        if(location<0 && location>=a.length){
+
+    static int[] updateElements(int[] a, int location, int element) {
+        if (location < 0 && location >= a.length) {
             System.out.println("invalid location");
             return a;
         }
-        a[location]=element;
+        a[location] = element;
         return a;
     }
-    static int[]updateoldtonew(int a[],int olde,int newe){
-        int b[]=new int[a.length];
-        for(int i=0;i<a.length;i++){
-           b[i] =a[i];
+
+    static int[] updateoldtonew(int a[], int olde, int newe) {
+        int b[] = new int[a.length];
+        for (int i = 0; i < a.length; i++) {
+            b[i] = a[i];
         }
-        for(int i=0;i<a.length;i++){
-            if(b[i]==olde){
-                b[i]=newe;
+        for (int i = 0; i < a.length; i++) {
+            if (b[i] == olde) {
+                b[i] = newe;
             }
         }
-     return b;
+        return b;
     }
 
+    public static boolean isIdentity(int a[][], int rsize, int csize) {
+        for (int i = 0; i < rsize; i++) {
+            for (int j = 0; j < csize; j++) {
+                if (i != j && a[i][j] != 0) {// Non digonal elements and is not zero
+                    return false;
+                }
+                if (i == j && a[i][j] != 1) {// digonal element but value is not 1
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    static int[] rotateleft(int a[], int r) {
+        int temp, prev, i, j;
+        for (i = 0; i < r; i++) {
+            prev = a[0];
+            for (j = a.length - 1; j >= 0; j--) {
+                temp = a[j];
+                a[j] = prev;
+                prev = temp;
+            }
+        }
+        return a;
+    }
+
+    static int [] rotateRight(int a[], int r){
+        int temp, i,j, prev;
+        for(i=0;i<r;i++){
+        prev=a[a.length-1];
+        for(j=0;j<a.length;j++){
+            temp=a[j];
+            a[j]=prev;
+            prev=temp;
+        }
+        }
+        return a;
+    }
+    static void SelectionSort(int a[]){//ascennding [1,2,3,4,5]
+        int i,j, temp;
+        for(i=0;i<a.length-1;i++){
+            for(j=i+1;j<a.length;j++){
+                if(a[i]>a[j]){
+                    temp=a[j];
+                    a[j]=a[i];
+                    a[i]=temp;
+                }
+            }
+        }
+    }
+    static void BubbleSort(int a[]){//ascennding [1,2,3,4,5]
+        int i,j, temp;
+        for(i=0;i<a.length-1;i++){// i ko fix karke J ke sath khela hotA HAI .// OUTER LOOP HOTA HAI FOR CHECKING NO.OF ITERATIONS
+            for(j=0;j<a.length-i-1;j++){ //inner loop for comparison.
+                if(a[j]>a[j+1]){
+                    temp=a[j];
+                    a[j]=a[j+1];
+                    a[j+1]=temp;
+                }
+            }
+        }
+    }
     public static void main(String args[]) {
         // int[] a={1,22,333,4444,5555};
         // System.out.println(a.length);
@@ -387,7 +453,7 @@ public class test {
         // System.out.println(a[i]);
         // }
 
-        /// sort he elements in ascending order:
+        /// sort the elements in ascending order:
         // Scanner sc = new Scanner(System.in);
         // System.out.println("enter the Size of the array : ");
         // int size= sc.nextInt();
@@ -418,7 +484,7 @@ public class test {
         // // program to find 2 max and 2 min element:
         // System.out.println(" 2nd max element is as follows : "+ a[a.length-2]);
         // System.out.println(" 2nd min element is as follows : "+ a[1]);
-        // // program to find 2 max and 2 min element:
+        // // program to find 3 max and 3 min element:
         // System.out.println(" 3nd max element is as follows : "+ a[a.length-3]);
         // System.out.println(" 3nd min element is as follows : "+ a[2]);
         // System.out.println("the Sorted array in ascending order is as follows : ");
@@ -531,7 +597,7 @@ public class test {
         // Scanner sc = new Scanner(System.in);
         // int a[] = new int[5];
         // for (int i = 0; i < a.length; i++) {
-        //     a[i] = sc.nextInt();
+        // a[i] = sc.nextInt();
         // }
         // System.out.println(Arrays.toString(Deletefromthelocation(a, 2)));
         // System.out.println(Arrays.toString(deleteall(a)));
@@ -539,6 +605,414 @@ public class test {
         // System.out.println(Arrays.toString(updateElements(a,3,50)));
         // System.out.println(Arrays.toString(updateoldtonew(a,10,50)));
 
-    // write a program to read and write 
+        // write a program to read and write matrrix element
+        // Scanner sc= new Scanner(System.in);
+        // System.out.println("Enter Row Size:");
+        // int rsize= sc.nextInt();
+        // System.out.println("Enter column Size:");
+        // int csize=sc.nextInt();
+        // int i, j, a [][]=new int[rsize][csize];
+        // System.out.println("Enter matrix element one -by- one :");
+        // //for taking input inn the mattrix
+        // for(i=0;i<rsize;i++){
+        // for(j=0;j<csize;j++){
+        // a[i][j]=sc.nextInt();
+        // }
+        // }
+        // //for displaying elements of the matrix:
+        // System.out.println("Elements of the martix is as follows:");
+        // for(i=0;i<rsize;i++){
+        // for(j=0;j<csize;j++){
+        // System.out.print(a[i][j]+"["+i+","+j+"]");
+        // }
+        // System.out.println();
+        // }
+
+        // ADDITION OF TWO MATRICES:
+        // Scanner sc= new Scanner(System.in);
+        // System.out.println("Enter the row and col size for matrix a respectively :
+        // ");
+        // int rsizeA=sc.nextInt();
+        // int csizeA=sc.nextInt();
+        // System.out.println("Enter the row and col size for matrix b respectively :
+        // ");
+        // int rsizeB=sc.nextInt();
+        // int csizeB=sc.nextInt();
+
+        // int i, j ,A[][]= new int[rsizeA][csizeA], B[][]=new int [rsizeB][csizeB],
+        // C[][]=new int [rsizeA][csizeA];
+        // System.out.println("enter elements of array A:");
+        // //taking input in both the arrays :
+        // for(i=0;i<rsizeA;i++){
+        // for(j=0;j<csizeA;j++){
+        // A[i][j]=sc.nextInt();
+        // }
+        // }
+        // System.out.println("enter elements of array B:");
+        // for(i=0;i<rsizeB;i++){
+        // for(j=0;j<csizeB;j++){
+        // B[i][j]=sc.nextInt();
+        // }
+        // }
+        // // Displaying elements of both the arrays:
+        // System.out.println("elements of Arrays A :");
+        // for(i=0;i<rsizeA;i++){
+        // for(j=0;j<csizeA;j++){
+        // System.out.print(A[i][j]+" ");
+        // }
+        // System.out.println();
+        // }
+        // System.out.println("elements of Arrays B:");
+        // for(i=0;i<rsizeB;i++){
+        // for(j=0;j<csizeB;j++){
+        // System.out.print(B[i][j]+" ");
+        // }
+        // System.out.println();
+        // }
+        // if(rsizeA==rsizeB && csizeA==csizeB){
+        // for(i=0;i<rsizeA;i++){
+        // for(j=0;j<csizeB;j++){
+        // C[i][j]=A[i][j]+B[i][j] ;
+        // }
+        // }
+        // //displaying elemants of c matrix:
+        // System.out.println("result of addition of two matrices A and B : ");
+        // for(i=0;i<rsizeA;i++){
+        // for(j=0;j<csizeB;j++){
+        // System.out.print(C[i][j]+" ");
+        // }
+        // System.out.println();
+        // }
+
+        // }
+        // else{
+        // System.out.println("matrix aadition is not possible:");
+        // }
+
+        // //matrix multiplication :
+        // Scanner sc= new Scanner(System.in);
+        // System.out.println("Enter the row and col size for matrix a respectively :
+        // ");
+        // int rsizeA=sc.nextInt();
+        // int csizeA=sc.nextInt();
+        // System.out.println("Enter the row and col size for matrix b respectively :
+        // ");
+        // int rsizeB=sc.nextInt();
+        // int csizeB=sc.nextInt();
+
+        // int i, j ,A[][]= new int[rsizeA][csizeA], B[][]=new int [rsizeB][csizeB],
+        // C[][]=new int [rsizeA][csizeB];
+        // System.out.println("enter elements of array A:");
+        // //taking input in both the arrays :
+        // for(i=0;i<rsizeA;i++){
+        // for(j=0;j<csizeA;j++){
+        // A[i][j]=sc.nextInt();
+        // }
+        // }
+        // System.out.println("enter elements of array B:");
+        // for(i=0;i<rsizeB;i++){
+        // for(j=0;j<csizeB;j++){
+        // B[i][j]=sc.nextInt();
+        // }
+        // }
+        // // Displaying elements of both the arrays:
+        // System.out.println("elements of Arrays A :");
+        // for(i=0;i<rsizeA;i++){
+        // for(j=0;j<csizeA;j++){
+        // System.out.print(A[i][j]+" ");
+        // }
+        // System.out.println();
+        // }
+        // System.out.println("elements of Arrays B:");
+        // for(i=0;i<rsizeB;i++){
+        // for(j=0;j<csizeB;j++){
+        // System.out.print(B[i][j]+" ");
+        // }
+        // System.out.println();
+        // }
+        // if(rsizeA==csizeB){
+        // for(i=0;i<rsizeA;i++){
+        // for(j=0;j<csizeB;j++){
+        // C[i][j]=0;
+        // for(int k=0;k<csizeA;k++){
+        // C[i][j]=C[i][j]+(A[i][k]*B[k][j]) ;
+        // }
+
+        // }
+        // }
+        // //displaying elemants of c matrix:
+        // System.out.println("result of multiplication of two matrices A and B : ");
+        // for(i=0;i<rsizeA;i++){
+        // for(j=0;j<csizeB;j++){
+        // System.out.print(C[i][j]+" ");
+        // }
+        // System.out.println();
+        // }
+
+        // }
+        // else{
+        // System.out.println("matrix multipplication is not possible:");
+        // }
+
+        // implement a program to read and calculate Sum of all the elements present in
+        // the matrix::
+
+        // Scanner sc=new Scanner(System.in);
+        // System.out.println("Enter the size of the matrix :");
+        // int rsize=sc.nextInt();
+        // int csize=sc.nextInt();
+        // int a[][]=new int[rsize][csize];
+        // System.out.println("Enter the elements of the matrix :");
+        // for(int i=0;i<rsize;i++){
+        // for(int j=0;j<csize;j++){
+        // a[i][j]=sc.nextInt();
+        // }
+        // }
+        // int Sum=0;
+        // for(int i=0;i<rsize;i++){
+        // for(int j=0;j<csize;j++){
+        // Sum=Sum+a[i][j];
+        // }
+        // }
+        // System.out.println("the Sum of all elements of the array is : " + Sum);
+
+        // row wise sum of elements:
+        // Scanner sc=new Scanner(System.in);
+        // System.out.println("Enter the rsize & csize of the matrix respectively :");
+        // int rsize=sc.nextInt();
+        // int csize=sc.nextInt();
+        // int a[][]=new int[rsize][csize];
+        // System.out.println("Enter the elements of the matrix :");
+        // for(int i=0;i<rsize;i++){
+        // for(int j=0;j<csize;j++){
+        // a[i][j]=sc.nextInt();
+        // }
+        // }
+        // for(int i=0;i<rsize;i++){
+        // int Sum=0;
+        // for(int j=0;j<csize;j++){
+        // Sum=Sum+a[i][j];
+        // }
+        // System.out.println("Sum of "+(i+1)+"Row :"+ Sum);
+        // }
+
+        // col wise sum of elements:
+        // for(int i=0;i<rsize;i++){
+        // int Sum=0;
+        // for(int j=0;j<csize;j++){
+        // Sum=Sum+a[j][i];
+        // }
+        // System.out.println("Sum of "+(i+1)+"Col :"+ Sum);
+        // }
+
+        // transpose of a matrix:
+        // Scanner sc=new Scanner(System.in);
+        // System.out.println("Enter the rsize & csize of the matrix respectively :");
+        // int rsize=sc.nextInt();
+        // int csize=sc.nextInt();
+        // int a[][]=new int[rsize][csize];
+        // System.out.println("Enter the elements of the matrix :");
+        // for(int i=0;i<rsize;i++){
+        // for(int j=0;j<csize;j++){
+        // a[i][j]=sc.nextInt();
+        // }
+        // }
+        // System.out.println("the orignal matrix :");
+        // for(int i=0;i<rsize;i++){
+        // for(int j=0;j<csize;j++){
+        // System.out.print(a[i][j]+" ");
+        // }
+        // System.out.println();
+        // }
+        // System.out.println("the transpose of the orignal matrix :");
+        // for(int i=0;i<rsize;i++){
+        // for(int j=0;j<csize;j++){
+        // System.out.print(a[j][i]+" ");
+        // }
+        // System.out.println();
+        // }
+
+        // to check if a matrix is an identity matrix or not:
+        // Scanner sc=new Scanner(System.in);
+        // System.out.println("Enter the rsize & csize of the matrix respectively :");
+        // int rsize=sc.nextInt();
+        // int csize=sc.nextInt();
+        // int a[][]=new int[rsize][csize];
+        // System.out.println("Enter the elements of the matrix :");
+        // for(int i=0;i<rsize;i++){
+        // for(int j=0;j<csize;j++){
+        // a[i][j]=sc.nextInt();
+        // }
+        // }
+        // System.out.println(isIdentity(a,rsize,csize));
+
+        // swaping of two rows in a matrix:
+        // Scanner sc=new Scanner(System.in);
+        // System.out.println("Enter the rsize & csize of the matrix respectively :");
+        // int rsize=sc.nextInt();
+        // int csize=sc.nextInt();
+        // int a[][]=new int[rsize][csize];
+        // System.out.println("Enter the elements of the matrix :");
+        // for(int i=0;i<rsize;i++){
+        // for(int j=0;j<csize;j++){
+        // a[i][j]=sc.nextInt();
+        // }
+        // }
+
+        // System.out.println("enter the number of rows to be interchanged , first the
+        // orignal row then the row to be interchanged respectively:");
+        // int m=sc.nextInt();
+        // int n=sc.nextInt();
+        // System.out.println("display orignal matrix :");
+        // for(int i=0;i<rsize;i++){
+        // for(int j=0;j<csize;j++){
+        // System.out.print(a[i][j]+" ");
+        // }
+        // System.out.println();
+        // }
+        // for(int i=0;i<rsize;i++){
+        // int temp= a[m-1][i];
+        // a[m-1][i]=a[n-1][i];
+        // a[n-1][i]=temp;
+        // }
+
+        // System.out.println("replaced matrix :");
+        // for(int i=0;i<rsize;i++){
+        // for(int j=0;j<csize;j++){
+        // System.out.print(a[i][j]+" ");
+        // }
+        // System.out.println();
+        // }
+
+        // Swapping of two col:
+        // Scanner sc=new Scanner(System.in);
+        // System.out.println("Enter the rsize & csize of the matrix respectively :");
+        // int rsize=sc.nextInt();
+        // int csize=sc.nextInt();
+        // int a[][]=new int[rsize][csize];
+        // System.out.println("Enter the elements of the matrix :");
+        // for(int i=0;i<rsize;i++){
+        // for(int j=0;j<csize;j++){
+        // a[i][j]=sc.nextInt();
+        // }
+        // }
+
+        // System.out.println("enter the number of col to be interchanged , first the
+        // orignal col then the col to be interchanged respectively:");
+        // int m=sc.nextInt();
+        // int n=sc.nextInt();
+        // System.out.println("display orignal matrix :");
+        // for(int i=0;i<rsize;i++){
+        // for(int j=0;j<csize;j++){
+        // System.out.print(a[i][j]+" ");
+        // }
+        // System.out.println();
+        // }
+        // for(int i=0;i<rsize;i++){
+        // int temp= a[i][m-1];
+        // a[i][m-1]=a[i][n-1];
+        // a[i][n-1]=temp;
+        // }
+
+        // System.out.println("replaced matrix :");
+        // for(int i=0;i<rsize;i++){
+        // for(int j=0;j<csize;j++){
+        // System.out.print(a[i][j]+" ");
+        // }
+        // System.out.println();
+        // }
+
+        // Sum of digonal elements:
+
+        // Scanner sc=new Scanner(System.in);
+        // System.out.println("Enter the rsize & csize of the matrix respectively :");
+        // int rsize=sc.nextInt();
+        // int csize=sc.nextInt();
+        // int a[][]=new int[rsize][csize];
+        // System.out.println("Enter the elements of the matrix :");
+        // for(int i=0;i<rsize;i++){
+        // for(int j=0;j<csize;j++){
+        // a[i][j]=sc.nextInt();
+        // }
+        // }
+        // digonal elements Sum
+        // int Sum=0;
+        // for(int i=0;i<rsize;i++){
+        // for(int j=0;j<csize;j++){
+        // if(i==j){
+        // Sum=Sum+a[i][j];
+        // }
+        // }
+        // }
+        // System.out.println("Sum of digonal elements are as follows: "+Sum);
+        // Sum of opposite digonal elements:
+        // int OppSum=0;
+        // for(int i=0;i<rsize;i++){
+        // OppSum=OppSum+a[i][csize-1-i];
+
+        // }
+        // System.out.println("Sum of Opposite digonal elements are as follows:
+        // "+OppSum);
+
+        // program to interchange digonals :
+
+        // Scanner sc=new Scanner(System.in);
+        // System.out.println("Enter the rsize & csize of the matrix respectively :");
+        // int rsize=sc.nextInt();
+        // int csize=sc.nextInt();
+        // int a[][]=new int[rsize][csize];
+        // System.out.println("Enter the elements of the matrix :");
+        // for(int i=0;i<rsize;i++){
+        // for(int j=0;j<csize;j++){
+        // a[i][j]=sc.nextInt();
+        // }
+        // }
+        // System.out.println("orignal matrix: ");
+        // for(int i=0;i<rsize;i++){
+        // for(int j=0;j<csize;j++){
+        // System.out.print(a[i][j]+" ");
+        // }
+        // System.out.println();
+        // }
+        // for(int i=0;i<rsize;i++){
+        // for(int j=0;j<csize;j++){
+        // if(i==j){
+        // int temp=a[i][j];
+        // a[i][j]=a[i][csize-1-i];
+        // a[i][csize-1-i]=temp;
+        // }
+
+        // }
+        // }
+        // System.out.println("interchanged matrix: ");
+        // for(int i=0;i<rsize;i++){
+        // for(int j=0;j<csize;j++){
+        // System.out.print(a[i][j]+" ");
+        // }
+        // System.out.println();
+
+        // }
+
+        // Array rotations:
+        // Scanner sc = new Scanner(System.in);
+        // int a[] = { 1, 2, 3, 4, 5 };
+        // System.out.println("enter number of rotations:");
+        // int r = sc.nextInt();
+        // System.out.println("Before rotation:" + Arrays.toString(a));
+        // a = rotateleft(a, r);
+        // System.out.println("After left rotation:" + Arrays.toString(a));
+        // a = rotateRight(a, r);
+        // System.out.println("After right  rotation:" + Arrays.toString(a));
+
+        // SORTING METHODES:
+        Scanner sc = new Scanner(System.in);
+        int a[] = { 1,5,6,8,2};
+        System.out.println("before bubble sorting : "+Arrays.toString(a));
+        BubbleSort(a);
+        System.out.println("after bubble sorting : "+ Arrays.toString(a));
+        System.out.println();
+        System.out.println("before Selection sorting : "+Arrays.toString(a));
+        SelectionSort(a);
+        System.out.println("after  Selection sorting : "+ Arrays.toString(a));
     }
 }
