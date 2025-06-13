@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.Arrays;
+import java.util.Random;
 
 public class test {
     public static int factorial(int n) {
@@ -169,42 +170,66 @@ public class test {
         return a;
     }
 
-    static int [] rotateRight(int a[], int r){
-        int temp, i,j, prev;
-        for(i=0;i<r;i++){
-        prev=a[a.length-1];
-        for(j=0;j<a.length;j++){
-            temp=a[j];
-            a[j]=prev;
-            prev=temp;
-        }
+    static int[] rotateRight(int a[], int r) {
+        int temp, i, j, prev;
+        for (i = 0; i < r; i++) {
+            prev = a[a.length - 1];
+            for (j = 0; j < a.length; j++) {
+                temp = a[j];
+                a[j] = prev;
+                prev = temp;
+            }
         }
         return a;
     }
-    static void SelectionSort(int a[]){//ascennding [1,2,3,4,5]
-        int i,j, temp;
-        for(i=0;i<a.length-1;i++){
-            for(j=i+1;j<a.length;j++){
-                if(a[i]>a[j]){
-                    temp=a[j];
-                    a[j]=a[i];
-                    a[i]=temp;
+
+    static void SelectionSort(int a[]) {// ascending [1,2,3,4,5]
+        int i, j, temp, minIndex;
+
+        for (i = 0; i < a.length - 1; i++) {
+            minIndex = i;
+            for (j = i + 1; j < a.length; j++) {
+                if (a[j] < a[minIndex]) {
+                    minIndex = j;
+                }
+
+            }
+            if (minIndex != i) {
+                // swap
+                temp = a[i];
+                a[i] = a[minIndex];
+                a[minIndex] = temp;
+            }
+        }
+    }
+
+    static void BubbleSort(int a[]) {// ascennding [1,2,3,4,5]
+        int i, j, temp;
+        for (i = 0; i < a.length - 1; i++) {// i ko fix karke J ke sath khela hotA HAI .// OUTER LOOP HOTA HAI FOR
+                                            // CHECKING NO.OF ITERATIONS
+            for (j = 0; j < a.length - i - 1; j++) { // inner loop for comparison.
+                if (a[j] > a[j + 1]) { // for decending change > operator to <
+                    temp = a[j];
+                    a[j] = a[j + 1];
+                    a[j + 1] = temp;
                 }
             }
         }
     }
-    static void BubbleSort(int a[]){//ascennding [1,2,3,4,5]
-        int i,j, temp;
-        for(i=0;i<a.length-1;i++){// i ko fix karke J ke sath khela hotA HAI .// OUTER LOOP HOTA HAI FOR CHECKING NO.OF ITERATIONS
-            for(j=0;j<a.length-i-1;j++){ //inner loop for comparison.
-                if(a[j]>a[j+1]){
-                    temp=a[j];
-                    a[j]=a[j+1];
-                    a[j+1]=temp;
-                }
+
+    static void InsertionSort(int a[]) {//ascending order
+        int i, j, key;
+        for (i = 1; i < a.length; i++) {
+            key = a[i];
+            j = i - 1;
+            while (j >= 0 && a[j] > key) {/// for descending order use condition a[j]<key
+                a[j + 1] = a[j];
+                j--;
             }
+            a[j + 1] = key;
         }
     }
+
     public static void main(String args[]) {
         // int[] a={1,22,333,4444,5555};
         // System.out.println(a.length);
@@ -1002,17 +1027,29 @@ public class test {
         // a = rotateleft(a, r);
         // System.out.println("After left rotation:" + Arrays.toString(a));
         // a = rotateRight(a, r);
-        // System.out.println("After right  rotation:" + Arrays.toString(a));
+        // System.out.println("After right rotation:" + Arrays.toString(a));
 
         // SORTING METHODES:
-        Scanner sc = new Scanner(System.in);
-        int a[] = { 1,5,6,8,2};
-        System.out.println("before bubble sorting : "+Arrays.toString(a));
-        BubbleSort(a);
-        System.out.println("after bubble sorting : "+ Arrays.toString(a));
-        System.out.println();
-        System.out.println("before Selection sorting : "+Arrays.toString(a));
-        SelectionSort(a);
-        System.out.println("after  Selection sorting : "+ Arrays.toString(a));
+        Random r =new Random();
+        // Scanner sc = new Scanner(System.in);
+        int a[]=new int[10];
+        for(int i=0;i<a.length;i++){
+            a[i]=r.nextInt(100);
+        }
+
+        // System.out.println("before bubble sorting : "+Arrays.toString(a));
+        // BubbleSort(a);
+        // System.out.println("after bubble sorting : "+ Arrays.toString(a));
+        // System.out.println();
+        // System.out.println("before Selection sorting : "+Arrays.toString(a));
+        // SelectionSort(a);
+        // System.out.println("after Selection sorting : "+ Arrays.toString(a));
+
+        System.out.println("before insertion  sorting : " + Arrays.toString(a));
+        InsertionSort(a);
+        System.out.println("after  insertion sorting : " + Arrays.toString(a));
+
+        
+        
     }
 }
