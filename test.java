@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.util.Arrays;
 import java.util.Random;
 
+  
 public class test {
     public static int factorial(int n) {
         if (n == 0 || n == 1) {
@@ -1029,13 +1030,13 @@ public class test {
         // a = rotateRight(a, r);
         // System.out.println("After right rotation:" + Arrays.toString(a));
 
-        // SORTING METHODES:
-        Random r =new Random();
-        // Scanner sc = new Scanner(System.in);
-        int a[]=new int[10];
-        for(int i=0;i<a.length;i++){
-            a[i]=r.nextInt(100);
-        }
+        // // SORTING METHODES:
+        // Random r =new Random();
+        // // Scanner sc = new Scanner(System.in);
+        // int a[]=new int[10];
+        // for(int i=0;i<a.length;i++){
+        //     a[i]=r.nextInt(100);
+        // }
 
         // System.out.println("before bubble sorting : "+Arrays.toString(a));
         // BubbleSort(a);
@@ -1045,10 +1046,18 @@ public class test {
         // SelectionSort(a);
         // System.out.println("after Selection sorting : "+ Arrays.toString(a));
 
-        System.out.println("before insertion  sorting : " + Arrays.toString(a));
-        InsertionSort(a);
-        System.out.println("after  insertion sorting : " + Arrays.toString(a));
+        // System.out.println("before insertion  sorting : " + Arrays.toString(a));
+        // InsertionSort(a);
+        // System.out.println("after  insertion sorting : " + Arrays.toString(a));
 
+        //LINKEDLIST >>>
+       
+     
+
+      
+
+
+         
         
         
     }
