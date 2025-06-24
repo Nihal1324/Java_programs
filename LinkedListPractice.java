@@ -12,8 +12,26 @@
                     if(head == null){//if there is no data in the linked list...
                         System.out.println("The list is empty >>> 0");
                         return;
-
                     }
+                    Node temp=head;
+                    while(temp != null){
+                        System.out.print(temp.data+" => ");
+                        temp=temp.next;
+        
+                    }
+                    System.out.println("null");
+
+                }
+
+                void addLast(int data){
+                     Node newNode=new Node(data);
+                    if(head==null){//if there is no data in the linked list...
+                        head=newNode;//newNode is assigned to head ,i.e. this will become the first value;
+                        return;
+                    }
+                    newNode.next=head;//newNode ka next HEAD ko point kerega aur uske baad abb, jo head hai vo new node ko point keraga (i.e., head ban jaga newnode ka head ).  
+                    head=newNode;
+
                 }
 
                 void addFirst(int data){
@@ -22,7 +40,7 @@
                         head=newNode;//newNode is assigned to head ,i.e. this will become the first value;
                         return;
                     }
-                    newNode.next=head;//newNode ka next HEAD ko point kerega aur uske baad abb, jo head hai vo new node ko point keraga (i.e., head ban jaga newnode ka head ). 
+                    newNode.next=head;//newNode ka next HEAD ko point kerega aur uske baad abb, jo head hai vo new node ko point keraga (i.e., head ban jaga newnode ka head ).  
                     head=newNode;
 
                 }
